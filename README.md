@@ -2,7 +2,7 @@
 
 Mriguel makes AI coding agents ship the smallest change that actually works, prove it from outside the code, and stop there.
 
-I built it because every agent I use over-builds: ask for a cache and you get an adapter layer with a Redis stub, report a bug on one page and the fix lands in that one caller, ask for a type and it grows four values "for completeness". These are the rules I kept repeating in reviews, written once and injected into every session and every subagent.
+I built it because getting code out of an agent is easy; getting it to stop is the hard part. Every extra line is something a person has to review, maintain and debug, and agents have no feel for that cost. Mriguel gives them one: understand the problem fully, build the least that solves it, prove it works, and say what was left out and when it would be worth adding.
 
 One skill file plus a few hooks. No dependencies, nothing phoning home. MIT.
 
