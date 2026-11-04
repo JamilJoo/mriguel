@@ -1,0 +1,21 @@
+{
+  "name": "mriguel",
+  "interface": {
+    "displayName": "mriguel"
+  },
+  "plugins": [
+    {
+      "name": "mriguel",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/JamilJoo/mriguel.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

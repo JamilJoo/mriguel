@@ -1,0 +1,11 @@
+{
+  "name": "mriguel",
+  "version": "1.1.0",
+  "description": "Smallest correct change that works: evidence first, reuse before writing, no unrequested abstractions, verification as part of the change.",
+  "author": { "name": "Jamil Joo" },
+  "homepage": "https://github.com/JamilJoo/mriguel",
+  "repository": "https://github.com/JamilJoo/mriguel.git",
+  "license": "MIT",
+  "keywords": ["lean", "yagni", "simplicity", "code-review"],
+  "hooks": "./hooks/claude.json"
+}

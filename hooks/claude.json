@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          { "type": "command", "command": "node -e \"require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT, 'hooks', 'activate.js'))\"", "timeout": 15 }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node -e \"require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT, 'hooks', 'subagent.js'))\"", "timeout": 15 }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node -e \"require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT, 'hooks', 'track.js'))\"", "timeout": 15 }
+        ]
+      }
+    ]
+  }
+}

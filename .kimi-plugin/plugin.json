@@ -1,0 +1,14 @@
+{
+  "name": "mriguel",
+  "description": "Smallest correct change that works: evidence first, reuse before writing, no unrequested abstractions, verification as part of the change.",
+  "author": {
+    "name": "Jamil Joo"
+  },
+  "license": "MIT",
+  "interface": {
+    "displayName": "mriguel",
+    "shortDescription": "Smallest correct change that works: evidence first, reuse before writing, no unrequested abstractions, verification as part of the change."
+  },
+  "skills": "./skills/",
+  "systemPromptPath": "./AGENTS.md"
+}

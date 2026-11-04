@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "mriguel",
+  "description": "Lean coding mode for AI agents: the smallest correct change that works, proven from outside the code.",
+  "owner": { "name": "Jamil Joo" },
+  "plugins": [
+    {
+      "name": "mriguel",
+      "description": "Evidence first, reuse before writing, shortest diff, verification as part of the change.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
