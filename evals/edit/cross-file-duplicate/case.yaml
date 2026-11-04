@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: cross-file-duplicate
+description: The same helper is copy-pasted in three files; the ticket changes its behaviour and names only one of them.
+context:
+  scaffold_script: fixture.sh

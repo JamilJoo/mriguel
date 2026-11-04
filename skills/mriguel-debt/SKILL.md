@@ -1,6 +1,7 @@
 ---
 name: mriguel-debt
 description: Harvest every "mriguel:" comment in the codebase into a ledger of deliberate shortcuts with their ceilings and upgrade paths. Use when asked "what did we defer", "mriguel debt", "list the shortcuts", or before a release. One-shot report, changes nothing.
+disable-model-invocation: true
 ---
 
 # mriguel-debt

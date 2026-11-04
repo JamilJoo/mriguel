@@ -1,6 +1,7 @@
 ---
 name: mriguel-help
 description: Reference card for the mriguel plugin: what the mode does, the ladder, the levels and the companion skills. Use when asked "mriguel help", "what does mriguel do", or "how do I use mriguel".
+disable-model-invocation: true
 ---
 
 # mriguel in one card

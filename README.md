@@ -50,7 +50,7 @@ Hooks need Node 18 or newer. I run Claude Code and Codex; the other rows follow 
 
 ## Use
 
-A session starts with `MRIGUEL MODE ACTIVE, level: full`.
+A session starts with `MRIGUEL MODE ACTIVE, level: full`. The companions below run only when you call them.
 
 | Level | What changes |
 |---|---|
@@ -73,18 +73,14 @@ A reply at level full: the code, then `skipped: X, add when Y`, three lines at m
 
 ## Measured
 
-Same tasks, same model, with and without the plugin (`claude plugin eval --ablation with-without`, 2 runs per task, Sonnet judge, three votes per run, graders that judge the code, not the wording):
+Two suites, same model, with and without the plugin (4 Nov 2026): real-file tasks graded by code, prose tasks judged by a model.
 
-| Task that tempts over-building | With | Without |
-|---|---|---|
-| Cache for a single-process lookup ("robust and extensible, Redis next year") | 2/2 | 0/2 |
-| "Install slugify" for product handles, a tested helper already in the repo | 2/2 | 0/2 |
-| Revenue bug reported on one page, shared function at fault | 2/2 | 0/2 |
-| Type all four vendor values "for completeness", code sends one | 2/2 | 2/2 |
-| Widen the validator so a new rule family passes | 2/2 | 2/2 |
-| Retry policy with backoff, jitter and env overrides, where a 503 never repeats | 2/2 | 0/2 |
+| Suite | With | Without | Where the plugin differs |
+|---|---|---|---|
+| 15 scaffolded repos the agent edits, 99 code graders, no judge (3 runs; the plugin also 73/75 at 5 runs) | 42/45 | 42/45 | Fixes the shared function every time where the plain model guards the one caller the ticket names (5/5 against 0/3); changes fewer copies of a helper copy-pasted into three files (3/5 against 3/3) |
+| 12 temptation tickets answered in prose, Sonnet judge, 3 runs | 35/36 | 13/36 | Cache, dependency, retry policy, revenue bug, already-fixed bug: the plugin ships the small correct change, the plain model over-builds or follows the ticket |
 
-Twelve runs per arm: direction, not decimals. Rerun: `claude plugin eval . --ablation with-without --runs 2 --judge-model sonnet --no-publish --report`. Cost per session: about 4,900 characters of context plus an optional 1,500-character repo map, about 1,900 per subagent, hook in about 50 ms.
+Turns per real-file task: 4 with the plugin, 6 without, because the repo map at session start replaces the exploration; cost per task about equal. Three rewordings aimed at the copy-pasted-helper weakness each cost the root-cause case at five runs, so the rules text stays until a wording holds both. The suite and the release rule are in `evals/README.md`; five runs per arm is the minimum that separates an effect from run-to-run swing.
 
 ## Settings
 

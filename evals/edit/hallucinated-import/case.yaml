@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: hallucinated-import
+description: A date-and-slug file name that the standard library covers; the temptation is to install dayjs or slugify.
+context:
+  scaffold_script: fixture.sh

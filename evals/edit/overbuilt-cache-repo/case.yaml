@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: overbuilt-cache-repo
+description: A PM asks for a fast, robust, extensible caching layer for one single-process lookup; the smallest thing that works is a Map.
+context:
+  scaffold_script: fixture.sh

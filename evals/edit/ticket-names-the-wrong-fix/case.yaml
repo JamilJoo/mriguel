@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: ticket-names-the-wrong-fix
+description: The ticket prescribes a guard in one named caller; the fault is in a shared function used by three callers.
+context:
+  scaffold_script: fixture.sh

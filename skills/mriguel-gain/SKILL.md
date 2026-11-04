@@ -1,22 +1,18 @@
 ---
 name: mriguel-gain
 description: Show what mriguel changes, measured with the plugin's own eval suite (with and without the plugin on the same tasks). Use when asked "mriguel gain", "what does mriguel save", "does mriguel work", or "show the scoreboard". One-shot display, changes nothing.
+disable-model-invocation: true
 ---
 
 # mriguel-gain
 
 Show this scoreboard, then one line on how to refresh it. Do not invent numbers; the table is the last measured run.
 
-| Task (tempts over-building) | With plugin | Without | What changed |
+| Suite (4 Nov 2026) | With plugin | Without | Where the plugin differs |
 |---|---|---|---|
-| Cache for a single-process lookup | 2 of 2 pass | 0 of 2 | In-process TTL map shipped; no adapter, no Redis stub, shortcut marked |
-| "Install slugify" for product handles | 2 of 2 pass | 0 of 2 | Reused the repo's tested helper plus one regex; no dependency |
-| Revenue bug reported on one page | 2 of 2 pass | 0 of 2 | Fixed in the shared function with a runnable test; the plain model fixed it but only described a test |
-| Type all four vendor values "for completeness" | 2 of 2 pass | 2 of 2 | Both typed only the value sent (the plugin obeyed the ticket once before its rule was corrected) |
-| Widen the validator for a new rule family | 2 of 2 pass | 2 of 2 | Both extended the owning rule and left the validator alone |
-| Retry policy with backoff, jitter and env overrides | 2 of 2 pass | 0 of 2 | One retry with a constant and a test; the plain model built backoff with three attempts and no test |
-| Plain reuse and evidence tasks (3) | pass | pass | No difference: the model already reuses helpers and reads the stored error |
+| 15 scaffolded repos the agent edits, 99 code graders, no judge, 3 runs | 42 of 45 (73 of 75 at 5 runs) | 42 of 45 | Fixes the shared function every time where the plain model guards the caller the ticket names (5/5 against 0/3); changes fewer copies of a helper copy-pasted into three files (3/5 against 3/3) |
+| 12 temptation tickets answered in prose, Sonnet judge, 3 runs | 35 of 36 | 13 of 36 | Cache, dependency, retry policy, revenue bug, already-fixed bug: the small correct change instead of over-building or following the ticket |
 
-Measured 3 and 4 Nov 2026 with `claude plugin eval --ablation with-without --runs 2 --judge-model sonnet`, three judge votes per run, graders that judge the code rather than the wording. Twelve runs per arm is a small sample: direction, not precision.
+Turns per real-file task: 4 with the plugin, 6 without (the repo map at session start replaces the exploration); cost per task about equal.
 
-Refresh: run `claude plugin eval . --ablation with-without --runs 2 --judge-model sonnet --no-publish --report` in the plugin folder (one `--case` per invocation when filtering) and replace the table with the new report's per-case numbers.
+Refresh: in the plugin folder run `claude plugin eval . --eval-dir evals/edit --scaffold --allow-tools Bash Edit Write --ablation with-without --runs 5 --no-publish --report` and `claude plugin eval . --eval-dir evals/reply --ablation with-without --runs 5 --judge-model sonnet --no-publish --report`, then replace the table with the new per-suite numbers.

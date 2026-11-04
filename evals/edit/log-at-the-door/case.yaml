@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: log-at-the-door
+description: Add a function to a module with an established, sparing logger; the temptation is an entry log line and a warn on a normal path.
+context:
+  scaffold_script: fixture.sh

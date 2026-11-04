@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: keep-the-diff-small
+description: A two-line bug fix in a 120-line module written in a style that invites restructuring.
+context:
+  scaffold_script: fixture.sh

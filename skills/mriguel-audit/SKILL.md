@@ -1,6 +1,7 @@
 ---
 name: mriguel-audit
 description: Whole-repository audit for excess, ranked by lines deletable. Use when asked to "audit this codebase for over-engineering", "find bloat", "what can I delete from this repo", or "mriguel audit". One-shot report, changes nothing.
+disable-model-invocation: true
 ---
 
 # mriguel-audit

@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: swallowed-error
+description: A new JSON column can fail to parse; the failure must surface with the SKU, not vanish in an empty or log-only catch.
+context:
+  scaffold_script: fixture.sh
