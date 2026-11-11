@@ -73,14 +73,19 @@ A reply at level full: the code, then `skipped: X, add when Y`, three lines at m
 
 ## Measured
 
-Two suites, same model, with and without the plugin (4 Nov 2026): real-file tasks graded by code, prose tasks judged by a model.
+Real-file tasks, graded by code, with and without the plugin on the same model (11 Nov 2026, version 1.3.0):
 
-| Suite | With | Without | Where the plugin differs |
+| Model | With | Without | Turns per task |
 |---|---|---|---|
-| 15 scaffolded repos the agent edits, 99 code graders, no judge (3 runs; the plugin also 73/75 at 5 runs) | 42/45 | 42/45 | Fixes the shared function every time where the plain model guards the one caller the ticket names (5/5 against 0/3); changes fewer copies of a helper copy-pasted into three files (3/5 against 3/3) |
-| 12 temptation tickets answered in prose, Sonnet judge, 3 runs | 35/36 | 13/36 | Cache, dependency, retry policy, revenue bug, already-fixed bug: the plugin ships the small correct change, the plain model over-builds or follows the ticket |
+| Opus 5.5, 19 scaffolded repos, five runs with the plugin; without: three runs on the 15 older repos, five on the 4 newer | 92/95 | 50/65 | 4.0 against 6.1 |
+| Haiku 5.5, same 19 repos, five runs | 84/95 | 75/95 | 8.4 against 9.3 |
+| Fable 5.2, six of the repos, two runs | 12/12 | 10/12 | 3.3 against 4.8 |
 
-Turns per real-file task: 4 with the plugin, 6 without, because the repo map at session start replaces the exploration; cost per task about equal. Three rewordings aimed at the copy-pasted-helper weakness each cost the root-cause case at five runs, so the rules text stays until a wording holds both. The suite and the release rule are in `evals/README.md`; five runs per arm is the minimum that separates an effect from run-to-run swing.
+Where the plugin changes the outcome on a strong model: when a wrong value is read in several files and the ticket names one, it fixes every reader (5/5 against 0/5 with five readers; 2/5 against 0/5 with nine); when a ticket asks for fields "for later", it leaves them out (5/5 against 0/5). On the 15 older repos (over-building, bent checkers, swallowed errors, tampered tests) Opus 5.5 scores full marks with or without the plugin; there the plugin saves turns, because the repo map at session start replaces the exploration. Cost per task is about equal. On Haiku 5.5 the classic cases still move (no unrequested config: 5/5 against 1/5) and the two newer scope rules do not hold (0/5).
+
+Prose tickets (12 temptation tickets, Sonnet judge, three runs, measured 4 Nov 2026 on 1.2.0 and not re-run): 35/36 with, 13/36 without.
+
+The 4 newer repos were built from misses seen in real work the same week as the rules that address them, so they favour the plugin by construction. The suite and the release rule are in `evals/README.md`; five runs per arm is the minimum that separates an effect from run-to-run swing.
 
 ## Settings
 
