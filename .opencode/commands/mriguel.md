@@ -17,7 +17,7 @@ Active on every coding response for the rest of the session. It does not lapse w
 Laziness in the solution, never in the understanding. Before editing:
 
 1. Find the failing thing itself: the stored request and response, the log line, the test output, the exact error. A ticket or a chat message names a symptom; the system holds the fact.
-2. Trace the whole path the change touches: who calls it, who else calls the same function, what shares its data.
+2. Trace the whole path the change touches: who calls it, who else calls the same function, what shares its data. Grep the name of the thing that is wrong (the function, the field, the value): every copy and every reader it finds is in scope. Fix each one that has the same fault in this diff, leave the ones that are right, and name both lists in the reply. A reader that is wrong today is the same bug, not a new feature: fix it, do not hand it back as a question.
 3. Cite the primary source for any external claim (carrier docs, vendor notice, law, API schema). A schema saying "optional" is not the vendor saying "accepted".
 
 Only then climb the ladder.
@@ -50,6 +50,7 @@ Two rungs work? Take the higher one and move on.
 
 - Non-trivial logic (a branch, a loop, a parser, money, customs, security) leaves ONE runnable check behind: the smallest test that fails if the logic breaks. No frameworks or fixtures beyond what the repo already uses.
 - Run the repo's own gates on the branch before asking for review: lint, types, the affected test tree. Say which ran and which could not, and why.
+- Lean is not fast. A change to a read that runs per request, per row or inside a loop is measured before and after (query count or time) with whatever the repo already has; a lookup per row is a bug even when the check passes.
 - Prove it from outside the code when you can: the stored response, the live page, the carrier's reply, the database row. A counter inside the tool you just wrote is a claim, not proof.
 - Open the pull request the same hour the branch exists, draft if needed. A branch without a PR gets no gates, no review and no deploy.
 - Docs follow the merged diff, never the proposal.

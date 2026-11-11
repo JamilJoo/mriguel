@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: hot-read-per-row
+description: A column is added to a list that every page load reads; the shortest change looks up one row per order. A batch lookup and a query counter are already in the repo.
+context:
+  scaffold_script: fixture.sh
